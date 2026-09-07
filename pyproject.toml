@@ -1,0 +1,90 @@
+[build-system]
+requires = ["setuptools>=77.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hanbayes"
+version = "2.0.0"
+description = "HanBayes: Interpretable Bayesian learning for Chinese sentiment - discriminative weighting, redundancy suppression and sparse dependency modeling, from scratch."
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    { name = "HanBayes Contributors" }
+]
+keywords = [
+    "naive-bayes",
+    "chinese-nlp",
+    "sentiment-analysis",
+    "interpretable-ml",
+    "feature-weighting",
+    "mutual-information",
+    "explainable-ai",
+    "text-classification",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Text Processing :: Linguistic",
+    "Typing :: Typed",
+]
+dependencies = [
+    "numpy>=1.22",
+    "pandas>=1.4",
+    "scipy>=1.8",
+]
+
+[project.optional-dependencies]
+plot = ["matplotlib>=3.5"]
+dev = ["pytest>=7.0", "ruff>=0.4", "build>=1.2", "twine>=5.0"]
+
+[project.scripts]
+hanbayes = "hanbayes.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/GOOD-123-CPU/hanbayes"
+Documentation = "https://github.com/GOOD-123-CPU/hanbayes#readme"
+Changelog = "https://github.com/GOOD-123-CPU/hanbayes/blob/main/CHANGELOG.md"
+Issues = "https://github.com/GOOD-123-CPU/hanbayes/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+hanbayes = ["frozen.json", "py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 88
+target-version = "py39"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "UP",  # pyupgrade
+]
+ignore = [
+    "E501",  # long lines in docstrings / Chinese comments are acceptable
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["hanbayes"]

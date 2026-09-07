@@ -1,0 +1,4 @@
+﻿model_a,model_b,a_correct_b_wrong,a_wrong_b_correct,discordant_pairs,p_value_exact_two_sided,significant_at_0.05
+StandardNB,SDFWNB,15,48,63,3.7606121325417525e-05,True
+FWNB,DFWNB-v2,5,8,13,0.5810546875,False
+DFWNB-v2,SDFWNB,18,21,39,0.7492586247608418,False

@@ -1,0 +1,42 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.eggs/
+*.egg
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+
+# --- IDE ---
+.idea/
+.vscode/
+*.swp
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+
+# --- Data (downloaded or generated; never commit large datasets) ---
+data/raw/
+data/processed/
+*.tsv
+!tests/fixtures/*.tsv
+
+# --- Experiment outputs (reproducible via the pipeline) ---
+outputs/
+figures/
+final_models/
+*.pkl
+*.joblib
+
+# --- Logs ---
+*.log

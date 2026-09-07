@@ -1,0 +1,25 @@
+cleaned sizes: train=7544 dev=1138 test=1178
+final protocol: train+dev (8682) merged for training, single-shot evaluation on test (1178)
+engine: hanbayes 2.0.0 (single sparse count matrix, fully vectorized, scipy)
+
+== Final test metrics ==
+     model  Accuracy  Precision_正面  Recall_正面    F1_正面  Precision_负面  Recall_负面    F1_负面  Macro_Precision  Macro_Recall  Macro_F1  Balanced_Accuracy      AUC
+StandardNB  0.779287      0.754601   0.831081 0.790997      0.809886   0.726962 0.766187         0.782244      0.779022  0.778592           0.779022 0.850543
+      FWNB  0.802207      0.762811   0.880068 0.817255      0.856566   0.723549 0.784459         0.809688      0.801809  0.800857           0.801809 0.877026
+  DFWNB-v2  0.804754      0.763848   0.885135 0.820031      0.861789   0.723549 0.786642         0.812819      0.804342  0.803337           0.804342 0.882198
+    SDFWNB  0.807301      0.776097   0.866554 0.818835      0.847195   0.747440 0.794198         0.811646      0.806997  0.806516           0.806997 0.886657
+
+== McNemar exact tests ==
+       模型A      模型B  A正确B错误  A错误B正确  不一致样本总数   双侧精确p值  是否显著_p小于0.05
+StandardNB   SDFWNB      15      48       63 0.000038          True
+      FWNB DFWNB-v2       5       8       13 0.581055         False
+  DFWNB-v2   SDFWNB      18      21       39 0.749259         False
+
+== Paired bootstrap (5000 resamples, seed 142) ==
+ 平均Macro_F1差值  差值95%置信区间下限  差值95%置信区间上限  置信区间不含0  自助重采样次数  随机种子  old_model new_model
+     0.022284     0.012984     0.032455     True     5000   142 StandardNB      FWNB
+     0.002551    -0.003422     0.008567    False     5000   142       FWNB  DFWNB-v2
+     0.003149    -0.007195     0.013895    False     5000   142   DFWNB-v2    SDFWNB
+     0.027984     0.015261     0.040861     True     5000   142 StandardNB    SDFWNB
+
+FROZEN NUMBERS REPRODUCED EXACTLY (SDFWNB: Acc=0.8073, Macro-F1=0.8065, AUC=0.8867)
