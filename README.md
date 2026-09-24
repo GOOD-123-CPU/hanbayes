@@ -76,6 +76,16 @@ The checked-in result files are in [results/](results/):
 - [final_test_bootstrap.csv](results/final_test_bootstrap.csv)
 - [reproduction_log.txt](results/reproduction_log.txt)
 
+### Published-result verification
+
+The repository separates two verification levels:
+
+- `pytest tests/test_evaluation.py` checks the statistical primitives themselves, including tied-score AUC, exact McNemar probabilities, and seeded paired-bootstrap reproducibility.
+- `python scripts/verify_published_results.py` checks that the committed frozen config and published metric/McNemar/bootstrap CSV artifacts are internally consistent (model set, value ranges, discordant-pair counts, significance flags, bootstrap seed/resample contract, and packaged config equality).
+
+The artifact-contract check **does not retrain models** and is not presented as an independent reproduction. A fresh `python scripts/run_pipeline.py --final` run from the raw data remains the stronger reproduction test.
+
+
 ## Installation
 
 ```bash
